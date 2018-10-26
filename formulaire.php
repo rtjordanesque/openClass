@@ -5,13 +5,15 @@
         <h2>Commencez-donc par vous inscrire :</h2>
         <form name="inscription" method="post" action="saisie.php">
             Entrez votre pseudo : <input type="text" name="pseudo"/> <br/>
-            Entrez votre ville : <input type="text" name="ville"/><br/>
+	    Entrez votre ville : <input type="text" name="ville"/><br/>
+	    Entrez votre Email : <input type="text" name="email"/> <br/>
             <input type="submit" name="valider" value="OK"/>
         </form>
         <?php
         if(isset($_POST['valider'])){
             $pseudo=$_POST['pseudo'];
-            $ville=$_POST['ville'];
+	    $ville=$_POST['ville'];
+	    $email=$_POST['email'];
             echo 'Salut '. $pseudo.'de '. $ville.'<br/>Bienvenue sur mon site !';
         }
         ?>
