@@ -5,7 +5,7 @@ Activité 3
 //On recupere le div dont l'id est contenu
 var contenu = document.getElementById("contenu");
 
-//récuperer la liste des données avec ajaxGet
+//récuperer la liste des données avec ajaxGet et les afficher
 ajaxGet("https://oc-jswebsrv.herokuapp.com/api/liens",function(response){ 
     var listeLiens = JSON.parse(response);
     console.log(listeLiens);
