@@ -6,9 +6,9 @@ Activité 3
 var contenu = document.getElementById("contenu");
 
 //récuperer la liste des données avec ajaxGet et les afficher
-ajaxGet("https://oc-jswebsrv.herokuapp.com/api/liens",function(response){ 
+
+ajaxGet("https://oc-jswebsrv.herokuapp.com/api/liens", function (response) {
     var listeLiens = JSON.parse(response);
-    console.log(listeLiens);
     listeLiens.forEach(function (lien) {
         var elementLien = creerElementLien(lien);
         contenu.appendChild(elementLien);
@@ -98,6 +98,9 @@ boutonElt.addEventListener("click",function(e){
         lienObjet.url=lienCorect;
         lienObjet.auteur=inputNom.value;
 
+        //on envoi les données vers l'API
+        ajaxPost("https://oc-jswebsrv.herokuapp.com/api/lien",lienObjet,function(reponse){},true);
+
         var newLien=creerElementLien(lienObjet);
         contenu.insertBefore(newLien,document.querySelector("#contenu div"));
 
@@ -111,14 +114,13 @@ boutonElt.addEventListener("click",function(e){
         msg.textContent='Le lien "'+lienObjet.titre+'" a bien ete ajouté';
         divElt.appendChild(msg);
         divElt.appendChild(boutonElt);
+     
         
         //On enleve le message aprés deux seconde
         setTimeout(function(){
             divElt.innerHTML=" ";
             divElt.appendChild(boutonElt);
         },2000);
-        //on envoi les données vers l'API
-        ajaxPost("https://oc-jswebsrv.herokuapp.com/api/lien",lienObjet,function(reponse){},true);
 
         e.preventDefault();
     });
